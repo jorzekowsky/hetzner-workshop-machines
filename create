@@ -1,0 +1,17 @@
+#! /bin/bash
+
+terraform plan -detailed-exitcode
+if [ $? -ne 0 ]; then
+  echo "some terraforming to do"
+  terraform apply -auto-approve
+  echo '# inventory' | tee inventory
+  cat terraform.tfstate | jq --raw-output '.resources[].instances[].attributes | select(.name != null) | .ipv4_address' | tee -a inventory
+  echo "wait 15s after vm creation (otherwise apt may not be ready)"
+  sleep 15
+else
+  echo "no terraforming needed"
+fi
+
+echo "execute ansible playbook ..."
+ansible-playbook -i inventory -u root playbook.yml
+

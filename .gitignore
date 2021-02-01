@@ -1,0 +1,12 @@
+# keep
+#extract.sh
+#main.tf
+#README.md
+#terraform.tfvars.dist
+# ignore
+.terraform/
+.terraform.lock.hcl
+vars/main.yml
+inventory
+terraform.tfvars
+terraform.tfstate*

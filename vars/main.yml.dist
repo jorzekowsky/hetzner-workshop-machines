@@ -1,0 +1,16 @@
+# docker repo with a docker-compose.yml file in root folder
+repo: https://example.com/examle-docker-compose
+# valid email adress for certbot
+certbot-mail: mail@example.com
+#  --test-cert   Obtain a test certificate from a staging server
+#  --redirect    Automatically redirect all HTTP traffic to HTTPS for the newly 
+#                authenticated vhost. (default: Ask)
+#  --hsts        Add the Strict-Transport-Security header to every HTTP 
+#                response. Forcing browser to always use SSL for the domain. 
+#                Defends against SSL Stripping. (default: None)
+#  --uir         Add the "Content-Security-Policy: upgrade-insecure-requests" 
+#                header to every HTTP response. Forcing the browser to use 
+#                https:// for every http:// resource. (default: None)
+#  --auto-hsts   Gradually increasing max-age value for HTTP Strict Transport 
+#                Security security header (default: False)
+certbot-extra-params: "--redirect --hsts --test-cert"
