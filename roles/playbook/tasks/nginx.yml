@@ -20,4 +20,3 @@
 - name: enable lets encrypt
   ansible.builtin.shell:
     cmd: certbot -n -m {{ certbot_mail }} --nginx -d {{ ansible_eth0.ipv4.address }}.nip.io --agree-tos {{ certbot_extra_params }}
-

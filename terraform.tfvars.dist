@@ -1,2 +1,5 @@
-hcloud_token    = ""
+#hcloud_token    = "hetznercloudapitoken"
+#ssh_keys        = ["name-of-ssh-key-in-hetzner-cloud", "name-of-ssh-key-in-hetzner-cloud2"] 
+#server_count    = 1
 #server_type     = "cx11"
+#name            = "workshop"

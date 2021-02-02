@@ -17,3 +17,8 @@ certbot-mail: mail@example.com
 #  --auto-hsts   Gradually increasing max-age value for HTTP Strict Transport 
 #                Security security header (default: False)
 certbot-extra-params: "--redirect --hsts --test-cert"
+
+# user with ssh access and docker privilegues
+username: workshop
+# hint: use 'pwgen 16 1 -s' to generate a secure password
+userpassword: workshopT1UH

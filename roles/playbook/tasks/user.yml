@@ -1,0 +1,9 @@
+---
+- name: Add the user workshop
+  user:
+    name: "{{ username }}"
+    uid: 1337
+    groups: 
+      - docker
+    shell: /bin/bash
+    password: "{{ userpassword | password_hash('sha512') }}"

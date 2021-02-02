@@ -1,17 +1,20 @@
 ---
 - name: Git clone {{ docker_compose_repo }}
+  become_user: "{{ username }}"
   git:
     repo: "{{ docker_compose_repo }}"
-    dest: /root/docker-compose
+    dest: /home/{{ username }}/docker-compose
 
 - name: Tear down existing services
+  become_user: "{{ username }}"
   community.general.docker_compose:
-    project_src: docker-compose
+    project_src: /home/{{ username }}/docker-compose
     state: absent
 
 - name: Create and start services
+  become_user: "{{ username }}"
   community.general.docker_compose:
-    project_src: docker-compose
+    project_src: /home/{{ username }}/docker-compose
   register: output
 
 - name: Create and start services

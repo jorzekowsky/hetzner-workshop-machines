@@ -5,5 +5,8 @@
 - name: cofigure nginx proxy and ssl
   import_tasks: nginx.yml
 
+- name: create workshop user
+  import_tasks: user.yml
+
 - name: clone and run docker-compose repo
   import_tasks: docker.yml
