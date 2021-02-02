@@ -1,8 +1,14 @@
 variable "hcloud_token" {}
-variable "ssh_keys"     { default = ["jorzekowsky", "dkoch"] }
+variable "ssh_keys"     {}
 variable "image"        { default = "ubuntu-20.04" }
 variable "location"     { default = "fsn1"}
 variable "server_type"  { default = "cx11"}
+variable "name"         { default = "workshop" }
+variable "server_count" {
+  description = "Number of workshop servers"
+  type        = number
+  default     = 1
+}
 
 terraform {
   required_providers {
@@ -20,7 +26,8 @@ provider "hcloud" {
 
 # server
 resource "hcloud_server" "server" {
-  name        = basename(path.cwd)
+  count       = var.server_count
+  name        = "${var.name}${count.index + 1}"
   image       = var.image
   location    = var.location
   ssh_keys    = var.ssh_keys
