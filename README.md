@@ -6,7 +6,9 @@
     # add your hetzner cloud api token to terraform.tfvars
     terraform init
 
-    # change docker compose repo and certbot mail in vars/main.yml
+    cp roles/playbook/vars/main.yml.dist troles/playbook/vars/main.yml
+    # change docker-compose-repo and certbot-mail in roles/playbook/vars/main.yml
+
 
 ## create
 

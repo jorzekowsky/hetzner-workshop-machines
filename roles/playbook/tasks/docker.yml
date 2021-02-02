@@ -1,0 +1,19 @@
+---
+- name: Git clone {{ docker_compose_repo }}
+  git:
+    repo: "{{ docker_compose_repo }}"
+    dest: /root/docker-compose
+
+- name: Tear down existing services
+  community.general.docker_compose:
+    project_src: docker-compose
+    state: absent
+
+- name: Create and start services
+  community.general.docker_compose:
+    project_src: docker-compose
+  register: output
+
+- name: Create and start services
+  debug:
+    var: output

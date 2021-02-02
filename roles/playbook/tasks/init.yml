@@ -1,0 +1,46 @@
+---
+- name: Upgrade APT-Systems
+  apt: 
+    update_cache: yes
+    upgrade: safe
+
+- name: Add certbot apt repository
+  apt_repository:
+    repo: 'ppa:nginx/stable'
+    state: present  
+- name: Add Docker’s official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+- name: Add docker apt repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: Install packages
+  package: 
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    - gpg-agent
+    - git
+    - python3-pip
+    - nginx
+    - docker-ce
+    - python3-certbot-nginx
+
+- name: Install Compose on Linux systems
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+    force: yes
+
+- name: Install python packages
+  pip:
+    name: ["docker", "docker-compose"]
+    executable: pip3

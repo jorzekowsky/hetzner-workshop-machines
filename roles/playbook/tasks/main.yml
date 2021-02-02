@@ -1,0 +1,9 @@
+---
+- name: install software on client
+  import_tasks: init.yml
+
+- name: cofigure nginx proxy and ssl
+  import_tasks: nginx.yml
+
+- name: clone and run docker-compose repo
+  import_tasks: nginx.yml

@@ -1,7 +1,10 @@
 # docker repo with a docker-compose.yml file in root folder
 repo: https://example.com/examle-docker-compose
+
 # valid email adress for certbot
 certbot-mail: mail@example.com
+
+# certbot extra params
 #  --test-cert   Obtain a test certificate from a staging server
 #  --redirect    Automatically redirect all HTTP traffic to HTTPS for the newly 
 #                authenticated vhost. (default: Ask)

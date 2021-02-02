@@ -6,7 +6,7 @@
 # ignore
 .terraform/
 .terraform.lock.hcl
-vars/main.yml
+roles/*/vars/main.yml
 inventory
 terraform.tfvars
 terraform.tfstate*
