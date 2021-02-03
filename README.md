@@ -8,19 +8,22 @@
 
 ## init
 
+
+
     cp terraform.tfvars.dist terraform.tfvars
-    # add your hetzner cloud api token to terraform.tfvars
-    # optional chancge server_count and server_type
+    # add your hetzner cloud api token and the names of your sshkeys inside 
+    # hetzner cloud to **terraform.tfvars**
+    # optional change server_count and server_type
     terraform init
 
-    cp roles/playbook/vars/main.yml.dist troles/playbook/vars/main.yml
+    cp roles/playbook/vars/main.yml.dist roles/playbook/vars/main.yml
     # change docker-compose-repo and certbot-mail in roles/playbook/vars/main.yml
 
 ## start
 
     ./create
 
-## stop
+## stop / remove
 
     ./destroy
 
