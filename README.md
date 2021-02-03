@@ -1,5 +1,11 @@
 # Usage
 
+## requirements
+
+- terraform
+- ansible
+- jq (to parse terraform tfstate file)
+
 ## init
 
     cp terraform.tfvars.dist terraform.tfvars
