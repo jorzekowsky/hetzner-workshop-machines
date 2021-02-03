@@ -8,8 +8,6 @@
 
 ## init
 
-
-
     cp terraform.tfvars.dist terraform.tfvars
     # add your hetzner cloud api token and the names of your sshkeys inside 
     # hetzner cloud to **terraform.tfvars**
@@ -33,13 +31,10 @@
 
     terraform plan
     terraform apply
+    echo '# inventory' | tee inventory
+    cat terraform.tfstate | jq --raw-output '.resources[].instances[].attributes | select(.name != null) | .ipv4_address' | tee -a inventory
+    ansible-playbook -i inventory -u root playbook.yml
 
 ### remove
 
     terraform destroy
-
-## ansible
-
-    echo '# inventory' | tee inventory
-    cat terraform.tfstate | jq --raw-output '.resources[].instances[].attributes | select(.name != null) | .ipv4_address' | tee -a inventory
-    ansible-playbook -i inventory -u root playbook.yml
